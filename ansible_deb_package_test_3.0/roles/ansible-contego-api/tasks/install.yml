@@ -1,0 +1,12 @@
+---
+- name: ensure that tvault-contego-api package is installed on controller
+  shell: |
+          export TVAULT_PACKAGE=tvault-contego-api
+          apt-get install tvault-contego-api
+  register: install_contego_api_cmd
+
+- debug: msg="install contego-api:{{install_contego_api_cmd.stdout}}" verbosity={{verbosity_level}}
+
+- name: restart nova-api service
+  service: name="nova-api" state=restarted
+
