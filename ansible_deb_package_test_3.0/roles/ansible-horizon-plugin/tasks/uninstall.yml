@@ -1,0 +1,22 @@
+---
+- block:
+    - copy: src="{{automation_home}}/files/sync_static.py" dest="/tmp/sync_static.py"
+    - shell: ./manage.py shell < /tmp/sync_static.py &> /dev/null
+      args:
+         chdir: "{{HORIZON_PATH}}"
+    - file: path=/tmp/sync_static.py state=absent
+
+- name: purge python-workloadmanager client package
+  apt:
+      name: python-workloadmgrclient
+      state: absent
+      purge: yes
+
+- name: purge tvault horizon plugin package
+  apt:
+      name: tvault-horizon-plugin
+      state: absent
+      purge: yes
+
+- name: restart webserver service
+  service: name={{WebServer}} state=restarted

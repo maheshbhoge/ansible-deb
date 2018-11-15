@@ -1,0 +1,6 @@
+---
+- name: purge tvalut-contego-api debian package
+  apt:
+      name: tvault-contego-api
+      state: absent
+      purge: yes

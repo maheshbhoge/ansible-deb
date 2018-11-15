@@ -1,0 +1,25 @@
+---
+- name: install workloadmgr-client debian package
+  apt:
+     name: python-workloadmgrclient
+     state: present
+
+- name: install horizon plugin debian package
+  apt:
+     name: tvault-horizon-plugin
+     state: present
+
+- name: restart webserver service
+  service: name={{WebServer}} state=restarted
+
+- name: write content into destination file - sync_static.py
+  copy: src="{{automation_home}}/files/sync_static.py" dest="/tmp/sync_static.py"
+
+- name: Change the working directory to horizon and excute shell command
+  shell: ./manage.py shell < /tmp/sync_static.py &> /dev/null
+  args:
+       chdir: "{{HORIZON_PATH}}"
+
+- name: remove temporary file -  sync_static.py
+  file: path=/tmp/sync_static.py state=absent
+
