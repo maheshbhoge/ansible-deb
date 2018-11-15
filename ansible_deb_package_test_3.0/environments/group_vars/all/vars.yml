@@ -53,10 +53,10 @@ VAULT_SWIFT_AUTH_VERSION1: sample_auth_version
 #VAULT_S3_SECURE: False
 
 S3: True
-VAULT_S3_ACCESS_KEY: AKIAJRZSA6PLWFXXFUVA
-VAULT_S3_SECRET_ACCESS_KEY: 10Fnh4WrzLD2pOu8y8b4kP7pGZS5T/vZX93Y54kQ
-VAULT_S3_REGION_NAME: us-east-2
-VAULT_S3_BUCKET: qa-ekta
+VAULT_S3_ACCESS_KEY: 
+VAULT_S3_SECRET_ACCESS_KEY:
+VAULT_S3_REGION_NAME: 
+VAULT_S3_BUCKET:
 #### S3 Specific Backend Configurations
 #### Provide one of follwoing two values in s3_type variable, string's case should be match
 #Amazon/Ceph_S3/
