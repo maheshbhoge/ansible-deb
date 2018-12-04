@@ -1,7 +1,19 @@
 ---
-- name: purge contego-extension package
+- name: purge contego-common package
   apt:
-      name: tvault-contego
+      name: tvault-contego-common
+      state: absent
+      purge: yes
+
+- name: purge contego-nfs package
+  apt:
+      name: tvault-contego-nfs
+      state: absent
+      purge: yes
+
+- name: purge contego-object-store package
+  apt:
+      name: tvault-contego-object-store
       state: absent
       purge: yes
 
